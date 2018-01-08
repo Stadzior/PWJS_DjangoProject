@@ -1,0 +1,7 @@
+/.idea
+.DS_Store
+*.pyc
+*.log
+local_settings.py
+__pycache__/
+*.png
