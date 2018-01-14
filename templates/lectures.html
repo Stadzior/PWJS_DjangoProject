@@ -11,7 +11,7 @@
     <tbody>
         {% for lecture in lectures %}
             <tr>
-                <td><a href="{{ BASE_URL }}/lecture/{{ lecture.id }}">{{ lecture.nazwa }}</a></td>
+                <td><a href="{{ BASE_URL }}/lecture/{{ lecture.id }}">{{ lecture.name }}</a></td>
                 <td>
                     <form method="POST" action="{{ BASE_URL }}/lecture/delete/{{ lecture.id }}/">
                         {% csrf_token %}

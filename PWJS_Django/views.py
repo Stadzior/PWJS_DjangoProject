@@ -6,8 +6,18 @@ from PWJS_DjangoProject.forms import StudentForm, LectureForm, SignStudentForm, 
 # Student #
 
 
-def students(request):
+def index(request):
+    try:
+        l = Lecture.objects.all()
+        s = Student.objects.all()
+        t = Teacher.objects.all()
+        return render(request, 'index.html', {'lectures': l, 'students': s, 'teachers': t})
+    except Exception:
+        return render_to_response('index.html', {'error': True})
 
+
+def students(request):
+    try:
         if request.method == 'POST':
             f = StudentForm(request.POST)
             f.save()
@@ -15,17 +25,17 @@ def students(request):
         form = StudentForm()
         s = Student.objects.all()
         return render(request, 'students.html', {'students': s, 'form': form})
-    #else:
-    #    return render_to_response('lectures.html', {'error': True})
+    except Exception:
+       return render_to_response('students.html', {'error': True})
 
 
 def student(request, id):
-    #try:
+    try:
         s = Student.objects.get(pk=id)
         l = Lecture.objects.filter(student__in=[id])
         return render_to_response('student.html', {'lectures': l, 'student': s})
-    #except Exception:
-    #    return render_to_response('lecture.html', {'error': True})
+    except Exception:
+        return render_to_response('lecture.html', {'error': True})
 
 
 def delete_student(request, id):
@@ -77,6 +87,7 @@ def edit_lecture(request, id):
     else:
         form = LectureForm(instance=Lecture.objects.get(pk=id))
         return render(request, 'editForm.html', {'form': form})
+
 
 def sign_student(request, id):
     try:

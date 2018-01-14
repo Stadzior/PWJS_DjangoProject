@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock %}
+
+{% load static %}
+<!-- Bootstrap core CSS -->
+<link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+<link href="{% static "vendor/bootstrap/js/bootstrap.min.js" %}" rel="script">
+<link href="{% static "vendor/jquery/jquery.js" %}" rel="script">
+
+{% block content %}
+    <h5>Lectures</h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lecture in lectures %}
+                <tr>
+                    <td><a href="{{ BASE_URL }}/lecture/{{ lecture.id }}">{{ lecture.name }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br/>
+    <h5>Teachers</h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for teacher in teachers %}
+                <tr>
+                    <td><a href="{{ BASE_URL }}/teacher/{{ teacher.id }}">{{ teacher.name }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br/>
+    <h5>Students</h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+                <tr>
+                    <td><a href="{{ BASE_URL }}/student/{{ student.id }}">{{ student.name }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
