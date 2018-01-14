@@ -10,7 +10,7 @@
         <form action="{{ BASE_URL }}/lecture/sign_student/{{ lecture.id }}/" method="POST">
             {% csrf_token %}
             <input type="text" name="student_name" placeholder="Student's name & surname" />
-            <input type="submit" value="Join lecture" />
+            <input type="submit" value="Add student to lecture" />
         </form>
 
         Name: {{ lecture.name }} <br />

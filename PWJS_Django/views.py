@@ -91,16 +91,13 @@ def edit_lecture(request, id):
 
 def sign_student(request, id):
     try:
-        s = Student.objects.get(imie=request.POST['student_name'])
+        s = Student.objects.get(name=request.POST['student_name'])
         s.lectures.add(id)
         s.save()
-    except:
-        s = Student(imie=request.POST['student_name'])
-        s.save()
-        s.lectures = [id]
-        s.save()
+        return redirect('/lecture/' + id)
+    except Student.Entry:
+        return render_to_response('student.html', {'error': True})
 
-    return redirect('/lecture/' + id)
 
 # Teacher #
 
