@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %} Lista przedmiotów {% endblock %}
+
+{% block content %}
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form }}
+        <input value="Edytuj" type="submit" />
+    </form>
+{% endblock %}

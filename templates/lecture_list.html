@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} Lista przedmiotów {% endblock %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nazwa</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for przedmiot in przedmioty %}
+            <tr>
+                <td><a href="{{ BASE_URL }}/lectures/lecture/{{ przedmiot.id }}">{{ przedmiot.nazwa }}</td>
+                <td>
+                    <form method="POST" action="{{ BASE_URL }}/lectures/lecture/delete/{{ przedmiot.id }}/">
+                        {% csrf_token %}
+                        <input type="submit" value="Usuń"/>
+                    </form>
+                </td>
+                <td><a href="{{ BASE_URL }}/lectures/lecture/edit/{{ przedmiot.id }}">Edytuj</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

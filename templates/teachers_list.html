@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} Lista nauczycieli {% endblock %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Imię</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for nauczyciel in nauczyciele %}
+            <tr>
+                <td><a href="{{ BASE_URL }}/teachers/teacher/{{ nauczyciel.id }}">{{ nauczyciel.imie }}</td>
+                <td>
+                    <form method="POST" action="{{ BASE_URL }}/teachers/teacher/delete/{{ nauczyciel.id }}/">
+                        {% csrf_token %}
+                        <input type="submit" value="Usuń"/>
+                    </form>
+                </td>
+                <td><a href="{{ BASE_URL }}/teachers/teacher/edit/{{ nauczyciel.id }}">Edytuj</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

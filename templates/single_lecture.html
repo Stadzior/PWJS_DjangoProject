@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %} {{ przedmiot.nazwa }} {% endblock %}
+
+{% block content %}
+
+{% if error %}
+
+Nie znaleziono przedmiotu o podanym id
+
+{% else %}
+
+<form action="{{ BASE_URL }}/lectures/lecture/sign_student/{{ przedmiot.id }}/" method="POST">
+    {% csrf_token %}
+    <input type="text" name="student_name" placeholder="Imię i nazwisko ucznia" />
+    <input type="submit" value="Zapisz na przedmiot" />
+</form>
+
+Nazwa: {{ przedmiot.nazwa }} </br>
+Prowadzący:  </br>
+
+{% for nauczyciel in nauczyciele %}
+    <td><a href="{{ BASE_URL }}/teachers/teacher/{{ nauczyciel.id }}">{{ nauczyciel.imie }}</a></td></br>
+{% endfor %}
+
+Uczniowie: </br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Imię</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for uczen in uczniowie %}
+            <tr>
+                <td><a href="{{ BASE_URL }}/students/student/{{ przedmiot.id }}">{{ uczen.imie }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endif %}
+
+{% endblock %}
