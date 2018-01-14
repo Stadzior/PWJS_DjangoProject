@@ -76,7 +76,7 @@ def edit_lecture(request, id):
             return redirect('/lectures')
     else:
         form = LectureForm(instance=Lecture.objects.get(pk=id))
-        return render(request, 'edit_form.html', {'form': form})
+        return render(request, 'editForm.html', {'form': form})
 
 def sign_student(request, id):
     try:
@@ -127,4 +127,4 @@ def edit_teacher(request, id):
         return redirect('/teachers')
     else:
         form = TeacherForm(instance=Teacher.objects.get(pk=id))
-        return render(request, 'edit_form.html', {'form': form})
+        return render(request, 'editForm.html', {'form': form})

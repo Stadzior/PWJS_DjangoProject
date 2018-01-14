@@ -1,24 +1,24 @@
 {% extends 'base.html' %}
-{% block title %} Lista nauczycieli {% endblock %}
+{% block title %} Teachers list {% endblock %}
 
 {% block content %}
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Imię</th>
+            <th scope="col">Name & surname</th>
         </tr>
     </thead>
     <tbody>
-        {% for nauczyciel in nauczyciele %}
+        {% for teacher in teachers %}
             <tr>
-                <td><a href="{{ BASE_URL }}/teachers/teacher/{{ nauczyciel.id }}">{{ nauczyciel.imie }}</td>
+                <td><a href="{{ BASE_URL }}/teachers/teacher/{{ teacher.id }}">{{ teacher.imie }}</a></td>
                 <td>
-                    <form method="POST" action="{{ BASE_URL }}/teachers/teacher/delete/{{ nauczyciel.id }}/">
+                    <form method="POST" action="{{ BASE_URL }}/teachers/teacher/delete/{{ teacher.id }}/">
                         {% csrf_token %}
                         <input type="submit" value="Usuń"/>
                     </form>
                 </td>
-                <td><a href="{{ BASE_URL }}/teachers/teacher/edit/{{ nauczyciel.id }}">Edytuj</a></td>
+                <td><a href="{{ BASE_URL }}/teachers/teacher/edit/{{ teacher.id }}">Edit</a></td>
             </tr>
         {% endfor %}
     </tbody>
