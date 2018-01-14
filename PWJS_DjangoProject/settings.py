@@ -37,10 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'PWJS_DjangoProject.szkola',
-    'PWJS_DjangoProject.uczniowie',
-    'PWJS_DjangoProject.przedmioty',
-    'PWJS_DjangoProject.nauczyciele'
+    'PWJS_DjangoProject'
 ]
 
 MIDDLEWARE = [
@@ -161,4 +158,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'root')

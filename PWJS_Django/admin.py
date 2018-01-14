@@ -1,3 +1,6 @@
 from django.contrib import admin
+from PWJS_Django.models import Student, Lecture, Teacher
 
-# Register your models here.
+admin.site.register(Teacher)
+admin.site.register(Lecture)
+admin.site.register(Student)

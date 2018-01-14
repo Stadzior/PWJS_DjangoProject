@@ -15,13 +15,22 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from PWJS_DjangoProject import hello_view
-
+from PWJS_DjangoProject import index
+from PWJS_Django import views
 urlpatterns = [
-    url(r'^$', hello_view.hello),
+    url(r'^$', index.hello),
     url(r'^admin/', admin.site.urls),
-    url(r'^szkola/', include('PWJS_DjangoProject.szkola.urls')),
-    url(r'^lectures/', include('PWJS_DjangoProject.przedmioty.urls')),
-    url(r'^students/', include('PWJS_DjangoProject.uczniowie.urls')),
-    url(r'^teachers/', include('PWJS_DjangoProject.nauczyciele.urls'))
+    url(r'^lectures/$', views.lectures),
+    url(r'^lecture/(?P<id>[0-9]+)/', views.lecture),
+    url(r'^lecture/delete/(?P<id>[0-9]+)/', views.delete_lecture),
+    url(r'^lecture/edit/(?P<id>[0-9]+)/', views.edit_lecture),
+    url(r'^lecture/sign_student/(?P<id>[0-9]+)/', views.sign_student),
+    url(r'^students/', views.students),
+    url(r'^student/(?P<id>[0-9]+)/', views.student),
+    url(r'^student/delete/(?P<id>[0-9]+)/', views.delete_student),
+    url(r'^student/edit/(?P<id>[0-9]+)/', views.edit_student),
+    url(r'^teachers/', views.teachers),
+    url(r'^teacher/(?P<id>[0-9]+)/', views.teacher),
+    url(r'^teacher/delete/(?P<id>[0-9]+)/', views.delete_teacher),
+    url(r'^teacher/edit/(?P<id>[0-9]+)/', views.edit_teacher)
 ]
