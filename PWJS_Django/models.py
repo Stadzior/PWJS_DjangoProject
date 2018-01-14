@@ -6,7 +6,7 @@ class Lecture(models.Model):
     name = models.CharField(max_length=140)
 
     def __str__(self):
-        return u'{f}'.format(f=self.nazwa)
+        return u'{f}'.format(f=self.name)
 
 @python_2_unicode_compatible
 class Teacher(models.Model):
@@ -14,7 +14,7 @@ class Teacher(models.Model):
     lectures = models.ManyToManyField(Lecture)
 
     def __str__(self):
-        return u'{f}'.format(f=self.imie)
+        return u'{f}'.format(f=self.name)
 
 @python_2_unicode_compatible
 class Student(models.Model):
@@ -22,4 +22,4 @@ class Student(models.Model):
     lectures = models.ManyToManyField(Lecture)
 
     def __str__(self):
-        return u'{f}'.format(f=self.imie)
+        return u'{f}'.format(f=self.name)

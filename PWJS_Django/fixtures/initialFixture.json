@@ -1,0 +1,58 @@
+[
+  {
+    "model": "PWJS_Django.Student",
+    "pk": 1,
+    "fields": {
+      "name": "Jane Plain"
+    }
+  },
+  {
+    "model": "PWJS_Django.Student",
+    "pk": 2,
+    "fields": {
+      "name": "John Dorney"
+    }
+  },
+  {
+    "model": "PWJS_Django.Student",
+    "pk": 3,
+    "fields": {
+      "name": "Jack Black"
+    }
+  },
+  {
+    "model": "PWJS_Django.Student",
+    "pk": 4,
+    "fields": {
+      "name": "Tinky Winky"
+    }
+  },
+  {
+    "model": "PWJS_Django.Teacher",
+    "pk": 1,
+    "fields": {
+      "name": "Dean Winchester"
+    }
+  },
+  {
+    "model": "PWJS_Django.Teacher",
+    "pk": 2,
+    "fields": {
+      "name": "Bobby Boo"
+    }
+  },
+  {
+    "model": "PWJS_Django.Lecture",
+    "pk": 1,
+    "fields": {
+      "name": "Advanced mobile applications"
+    }
+  },
+  {
+    "model": "PWJS_Django.Lecture",
+    "pk": 2,
+    "fields": {
+      "name": "Statistic methods of data processing"
+    }
+  }
+]
