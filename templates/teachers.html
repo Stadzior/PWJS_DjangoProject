@@ -11,14 +11,14 @@
     <tbody>
         {% for teacher in teachers %}
             <tr>
-                <td><a href="{{ BASE_URL }}/teachers/teacher/{{ teacher.id }}">{{ teacher.imie }}</a></td>
+                <td><a href="{{ BASE_URL }}/teacher/{{ teacher.id }}">{{ teacher.name }}</a></td>
                 <td>
-                    <form method="POST" action="{{ BASE_URL }}/teachers/teacher/delete/{{ teacher.id }}/">
+                    <form method="POST" action="{{ BASE_URL }}/teacher/delete/{{ teacher.id }}/">
                         {% csrf_token %}
-                        <input type="submit" value="Usuń"/>
+                        <input type="submit" value="Delete"/>
                     </form>
                 </td>
-                <td><a href="{{ BASE_URL }}/teachers/teacher/edit/{{ teacher.id }}">Edit</a></td>
+                <td><a href="{{ BASE_URL }}/teacher/edit/{{ teacher.id }}">Edit</a></td>
             </tr>
         {% endfor %}
     </tbody>

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %} {{ nauczyciel.imie }} {% endblock %}
+
+{% block content %}
+
+    {% if error %}
+        Teacher not found
+    {% else %}
+
+        Name: {{ teacher.name }} <br/>
+
+        Lectures owned: <br/>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lecture in lectures %}
+                    <tr>
+                        <td><a href="{{ BASE_URL }}/lecture/{{ lecture.id }}">{{ lecture.name }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% endif %}
+
+{% endblock %}

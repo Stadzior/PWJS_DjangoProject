@@ -14,7 +14,7 @@ def students(request):
 
         form = StudentForm()
         s = Student.objects.all()
-        return render(request, 'students_list.html', {'students': s, 'form': form})
+        return render(request, 'students.html', {'students': s, 'form': form})
     #else:
     #    return render_to_response('lectures.html', {'error': True})
 
@@ -42,7 +42,7 @@ def edit_student(request, id):
             return redirect('/students')
     else:
         form = StudentForm(instance=Student.objects.get(pk=id))
-        return render(request, 'students_list.html', {'form': form})
+        return render(request, 'students.html', {'form': form})
 
 
 # Lecture #
@@ -96,7 +96,7 @@ def sign_student(request, id):
 
 def teachers(request):
     t = Teacher.objects.all()
-    return render(request, 'teachers_list.html', {'teachers': t})
+    return render(request, 'teachers.html', {'teachers': t})
 
 
 def teacher(request, id):
@@ -108,7 +108,7 @@ def teacher(request, id):
         f.save()
 
     l = Lecture.objects.filter(teacher=t)
-    return render(request, 'single_teacher.html', {'teacher': t, 'lectures': l})
+    return render(request, 'teacher.html', {'teacher': t, 'lectures': l})
     # except Exception:
     #    return render_to_response('lecture.html', {'error': True})
 
