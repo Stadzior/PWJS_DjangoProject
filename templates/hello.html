@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %} Lista przedmiotów {% endblock %}
+{% block title %} Lectures list {% endblock %}
 
 {% block content %}
     <form method="post" action="">
         {% csrf_token %}
         {{ form }}
-        <input value="Edytuj" type="submit" />
+        <input value="Edit" type="submit" />
     </form>
 {% endblock %}

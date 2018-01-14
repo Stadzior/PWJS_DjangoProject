@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} Lectures list {% endblock %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for lecture in lectures %}
+            <tr>
+                <td><a href="{{ BASE_URL }}/lecture/{{ lecture.id }}">{{ lecture.nazwa }}</a></td>
+                <td>
+                    <form method="POST" action="{{ BASE_URL }}/lecture/delete/{{ lecture.id }}/">
+                        {% csrf_token %}
+                        <input type="submit" value="Delete"/>
+                    </form>
+                </td>
+                <td><a href="{{ BASE_URL }}/lecture/edit/{{ lecture.id }}">Edit</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

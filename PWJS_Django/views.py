@@ -16,16 +16,16 @@ def students(request):
         s = Student.objects.all()
         return render(request, 'students_list.html', {'students': s, 'form': form})
     #else:
-    #    return render_to_response('lecture_list.html', {'error': True})
+    #    return render_to_response('lectures.html', {'error': True})
 
 
 def student(request, id):
     #try:
         s = Student.objects.get(pk=id)
-        l = Lecture.objects.filter(uczen__in=[id])
-        return render_to_response('single_student.html', {'lectures': l, 'student': s})
+        l = Lecture.objects.filter(student__in=[id])
+        return render_to_response('student.html', {'lectures': l, 'student': s})
     #except Exception:
-    #    return render_to_response('single_lecture.html', {'error': True})
+    #    return render_to_response('lecture.html', {'error': True})
 
 
 def delete_student(request, id):
@@ -50,18 +50,18 @@ def edit_student(request, id):
 
 def lectures(request):
     l = Lecture.objects.all()
-    return render(request, 'lecture_list.html', {'lectures': l})
+    return render(request, 'lectures.html', {'lectures': l})
 
 
 def lecture(request, id):
     try:
         form = SignStudentForm()
         l = Lecture.objects.get(pk=id)
-        s = Student.objects.filter(przedmioty__in=[id])
-        t = Teacher.objects.filter(przedmioty__in=[id])
-        return render(request, 'single_lecture.html', {'lecture': l, 'students': s, 'teachers': t, 'form': form})
+        s = Student.objects.filter(lectures__in=[id])
+        t = Teacher.objects.filter(lectures__in=[id])
+        return render(request, 'lecture.html', {'lecture': l, 'students': s, 'teachers': t, 'form': form})
     except Lecture.Entry:
-        return render_to_response('single_lecture.html', {'error': True})
+        return render_to_response('lecture.html', {'error': True})
 
 
 def delete_lecture(request, id):
@@ -107,10 +107,10 @@ def teacher(request, id):
         f = TeacherForm(request.POST, instance=t)
         f.save()
 
-    l = Lecture.objects.filter(nauczyciel=t)
+    l = Lecture.objects.filter(teacher=t)
     return render(request, 'single_teacher.html', {'teacher': t, 'lectures': l})
     # except Exception:
-    #    return render_to_response('single_lecture.html', {'error': True})
+    #    return render_to_response('lecture.html', {'error': True})
 
 
 def delete_teacher(request, id):
