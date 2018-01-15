@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from PWJS_Django.models import Teacher, Lecture, Student
 from django import forms
 
+
 class TeacherForm(ModelForm):
 
     class Meta:
